@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 char	table[3][3]={ {0,0},{0,0},{0,0} };
+int	x,y;
 
 int	init_table() {
 	int i,j;
@@ -28,7 +29,7 @@ int	print_table() {
 	return 0;
 }
 
-int	main(void) {
+int	test_table_1() {
 	print_table();
 	table[0][0] = 'x';
 	print_table();
@@ -36,5 +37,32 @@ int	main(void) {
 	print_table();
 	table[2][2] = 'z';
 	print_table();
+	return 0;
+}
+
+void	read_pos() {
+	int	n;
+	printf("please select position x,y: ");
+	n = scanf("%d,%d", &x, &y);
+}
+
+int	main(void) {
+	int	count=9;
+	char	c = 'x';
+
+	while (count > 0) {
+		read_pos();
+		printf("[x,y] = %d,%d\n", x,y);
+		if (x < 3 && y < 3) {
+			table[x][y] = c;
+			if (c == 'x') {
+				c = 'o';
+			} else {
+				c = 'x';
+			}
+		}
+		count--;
+	}
+	
 	return 0;
 }
