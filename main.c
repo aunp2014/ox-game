@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+char	table[3][3]={ {0,0},{0,0},{0,0} };
+
 int	print_table() {
 	printf(	"...\n"
 		"...\n"
