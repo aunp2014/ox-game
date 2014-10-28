@@ -41,9 +41,12 @@ int	test_table_1() {
 }
 
 void	read_pos() {
-	int	n;
-	printf("please select position x,y: ");
-	n = scanf("%d,%d", &x, &y);
+	int	n = 0;
+
+    do {
+    	printf("please select position x,y: ");
+    	n = scanf("%d,%d", &x, &y);
+    } while (n<2);
 }
 
 int	main(void) {
@@ -53,6 +56,7 @@ int	main(void) {
 	while (count > 0) {
 		read_pos();
 		printf("[x,y] = %d,%d\n", x,y);
+
 		if (x < 3 && y < 3) {
 			table[x][y] = c;
 			if (c == 'x') {
@@ -60,8 +64,11 @@ int	main(void) {
 			} else {
 				c = 'x';
 			}
-		}
-		count--;
+            print_table();       
+		} else {
+            printf("[%d, %d] is invalid position\n", x, y);
+        }
+        count--;
 	}
 	
 	return 0;
