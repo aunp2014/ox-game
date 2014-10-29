@@ -68,6 +68,11 @@ int	main(void) {
 		printf("[x,y] = %d,%d\n", x,y);
 
 		if (x < 3 && y < 3) {
+			if (table[x][y] != 0) {
+				printf("position (%d,%d) has been used by '%c'\n", 
+					x, y, table[x][y]);
+				continue;
+			}
 			table[x][y] = c;
 			if (c == 'x') {
 				c = 'o';

@@ -23,3 +23,7 @@ version 0.2
 version 0.2.1
 	Problem read_pos behave badly, instead of scanf(x,y) directly
 	read line as string and use sscanf() instead.
+
+version 0.2.2
+	Check location before place a new piece
+
