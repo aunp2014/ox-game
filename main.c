@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <strings.h>
 
 char	table[3][3]={ {0,0},{0,0},{0,0} };
 int	x,y;
@@ -42,15 +43,24 @@ int	test_table_1() {
 
 void	read_pos() {
 	int	n = 0;
+	char	buf[80], *s;
 
-    do {
-    	printf("please select position x,y: ");
-    	n = scanf("%d,%d", &x, &y);
-    } while (n<2);
+	do {
+		printf("please select position x,y: ");
+		fgets(buf, sizeof(buf)-1, stdin);
+		/* get rid of '\n' */
+		s = index(buf, '\n');
+		if (s != NULL)
+			*s = '\0';
+		n = sscanf(buf, "%d,%d", &x, &y);
+		if (n!=2) {
+			printf("invalid input '%s'\n", buf);
+		}
+	} while (n<2);
 }
 
 int	main(void) {
-	int	count=9;
+	int	count=3;
 	char	c = 'x';
 
 	while (count > 0) {
@@ -64,11 +74,11 @@ int	main(void) {
 			} else {
 				c = 'x';
 			}
-            print_table();       
+			print_table();       
 		} else {
-            printf("[%d, %d] is invalid position\n", x, y);
-        }
-        count--;
+			printf("[%d, %d] is invalid position\n", x, y);
+		}
+		count--;
 	}
 	
 	return 0;

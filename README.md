@@ -19,3 +19,7 @@ version 0.2
 - Get input
     - validate input
     - validate location
+
+version 0.2.1
+	Problem read_pos behave badly, instead of scanf(x,y) directly
+	read line as string and use sscanf() instead.
