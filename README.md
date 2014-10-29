@@ -27,3 +27,5 @@ version 0.2.1
 version 0.2.2
 	Check location before place a new piece
 
+version 0.3
+	Check for winning condition
