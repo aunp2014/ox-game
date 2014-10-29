@@ -18,15 +18,22 @@ int	init_table() {
 
 int	print_table() {
 	int	i,j;
+	FILE *f = fopen("output-board", "w");
+
+	if (f == (FILE *)NULL) {
+		fprintf(stderr, "Can't create output file\n");
+		exit(-1);
+	}
 
 	for (i=0;i<3;i++) {
 		for (j=0;j<3;j++) {
 			int c = table[i][j];
-			printf("%c", c==0?'.':c);
+			fprintf(f, "%c", c==0?'.':c);
 		}
-		printf("\n");
+		fprintf(f, "\n");
 	}
-	printf("\n");
+	fprintf(f, "\n");
+	fclose(f);
 
 	return 0;
 }
